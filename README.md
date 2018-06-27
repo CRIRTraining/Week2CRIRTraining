@@ -18,13 +18,6 @@ datReview = data.frame(a = c(1,2,3), b = c(4,5,6))
 datReview[,1]
 datReview$a
 ```
-The first thing you want to do is set the working directory.  This tells R where you want to read in and store data sets.  Go to the session, set working directory, then choose the working directory.  Then you can copy that path into the code so you don't have to do that every time.
-
-***** I am working on a mac so make sure you don't copy and paste the setwd directly from this page and you actually find the specific file path for your computer if you have a PC.
-
-Let's first export the data set that we have to a csv file because that is the easiest file to work with.  We can use the write.csv function to do that.  Row names are likely to be false.
-
-Then you can read the csv file using the read.csv function.  Most of the time the first row in the dataset will be the variable names, so you will need to set the header to be true.  
 
 Just run this code.  What it is doing is creating a data set with three variables.  Two continous variables and one ordinal variable and creating some NA values, so I can show you how to deal with NAs. 
 
@@ -38,13 +31,22 @@ datWeekTwo[1:10,1] = NA
 datWeekTwo[11:15,2] = -99
 datWeekTwo
 ```
+The first thing you want to do is set the working directory.  This tells R where you want to read in and store data sets.  Go to the session, set working directory, then choose the working directory.  Then you can copy that path into the code so you don't have to do that every time.
+
+***** I am working on a mac so make sure you don't copy and paste the setwd directly from this page and you actually find the specific file path for your computer if you have a PC.
+
+Let's first export the data set that we have to a csv file because that is the easiest file to work with.  We can use the write.csv function to do that.  Row names are likely to be false.
+
+Then you can read the csv file using the read.csv function.  Most of the time the first row in the dataset will be the variable names, so you will need to set the header to be true.  
+
+
 Sometimes you have multiple values that signal a value is NA (e.g. -99, -77).  To load all the possible NA values into R and turn them all into NA's use the na.strings function and concatinate the list of values using c() and put each character (i.e. non-integer) in quotation marks and each value should be separated by a comma.  
 
 For data that is left blank you can use the " " with one space.  Matt provide example during workshop.
 
 If you want to get rid of missing values you can use the na.omit function.  This function deletes any row that has at least one missing value for at least one variable. 
 ```{r}
-setwd("~/Desktop")
+setwd("C:/Users/Matthew.Hanauer/Desktop")
 write.csv(datWeekTwo, "datWeekTwo.csv", row.names = FALSE)
 datWeekTwo = read.csv("datWeekTwo.csv", header = TRUE, na.strings = c("NA",-99, " "))
 datWeekTwo
@@ -90,12 +92,3 @@ datWeekTwo$satisfaction = ifelse(datWeekTwo$satisfaction >=4, 1, 0)
 datWeekTwo$satisfaction
 ```
 Week two homework.  Get means for continuous variables and counts and percentages for at least one binary or ordinal variable from the data you loaded into R.
-
-
-
-
-
-
-
-
-
